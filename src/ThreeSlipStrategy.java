@@ -2,7 +2,7 @@
  * The enumerated strategies for the 3-slip game.
  *
  * @author Bennett Alex Myers
- * @version 2 October 2016
+ * @version 3 October 2016
  */
 public enum ThreeSlipStrategy {
     /** Discard second if smaller than first. */

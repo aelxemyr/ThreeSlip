@@ -4,7 +4,7 @@ import java.util.Random;
  * Represents slip of paper for 3-slip game.
  *
  * @author Bennett Alex Myers
- * @version 2 October 2016
+ * @version 3 October 2016
  */
 public class Slip {
 

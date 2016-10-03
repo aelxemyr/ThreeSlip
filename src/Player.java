@@ -2,7 +2,7 @@
  * Represents a player for three-slip game.
  *
  * @author Bennett Alex Myers
- * @version 2 October 2016
+ * @version 3 October 2016
  */
 public abstract class Player {
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Three slip problem simulation to test hypotheses.
  *
  * @author Bennett Alex Myers
- * @version 2 October 2016
+ * @version 3 October 2016
  */
 public class SlipHypoTester {
 

@@ -11,6 +11,10 @@ public class UninformedPlayer extends Player{
     private Slip choice;
     private long winCount;
 
+    public boolean isInformed() {
+        return false;
+    }
+
     public UninformedPlayer(ThreeSlipStrategy strategy) {
         this.strategy = strategy;
         this.winCount = 0;
@@ -24,8 +28,20 @@ public class UninformedPlayer extends Player{
         return this.winCount;
     }
 
+    public long getKeepSecondCount() {
+        return 0;
+    }
+
+    public long getDiscardSecondCount() {
+        return 0;
+    }
+
     public void incrementWinCount() {
         this.winCount++;
+    }
+
+    public ThreeSlipStrategy getStrategy() {
+        return this.strategy;
     }
 
     public void chooseSlipFrom(Slip[] slips) {

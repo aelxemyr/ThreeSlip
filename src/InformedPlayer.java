@@ -9,6 +9,8 @@ import java.util.ArrayList;
  */
 public class InformedPlayer extends Player{
 
+    private final ThreeSlipStrategy strategy =
+            ThreeSlipStrategy.INFORMED_STRATEGY;
     private Slip choice;
     private long winCount;
     private long keepSecondCount;
@@ -18,6 +20,10 @@ public class InformedPlayer extends Player{
         this.winCount = 0;
         this.keepSecondCount = 0;
         this.discardSecondCount = 0;
+    }
+
+    public boolean isInformed() {
+        return true;
     }
 
     public Slip getChoice() {
@@ -40,13 +46,17 @@ public class InformedPlayer extends Player{
         return this.discardSecondCount;
     }
 
+    public ThreeSlipStrategy getStrategy() {
+        return this.strategy;
+    }
+
     public void chooseSlipFrom(Slip[] slips) {
-        if (slips[2].value() > slips[1].value()) {
-            this.choice = slips[2];
+        if (slips[1].value() > slips[0].value()) {
+            this.choice = slips[1];
             this.keepSecondCount++;
         }
         else {
-            this.choice = slips[3];
+            this.choice = slips[2];
             this.discardSecondCount++;
         }
     }

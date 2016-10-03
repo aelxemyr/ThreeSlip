@@ -6,26 +6,31 @@ import java.util.ArrayList;
  * @author Bennett Alex Myers
  * @version 2 October 2016
  */
-public interface Player {
+public abstract class Player {
 
     /**
-     * Choose a slip from the available slips based on the player's strategy.
+     * Retrieves this player's choice of slip.
      *
-     * @param slips the available slips from which to choose
+     * @return the slip chosen
      */
-    void chooseSlipFrom(ArrayList<Slip> slips);
-
-    /**
-     * Retrieves this player's current choice.
-     *
-     * @return the slip currently chosen
-     */
-    Slip getChoice();
+    public abstract Slip getChoice();
 
     /**
      * Returns this player's win count.
      *
      * @return the number of games this player has won
      */
-    long getWinCount();
+    public abstract long getWinCount();
+
+    /**
+     * Increments this player's win count.
+     */
+    public abstract void incrementWinCount();
+
+    /**
+     * Choose a slip from the available slips based on the player's strategy.
+     *
+     * @param slips the available slips from which to choose
+     */
+    public abstract void chooseSlipFrom(Slip[] slips);
 }

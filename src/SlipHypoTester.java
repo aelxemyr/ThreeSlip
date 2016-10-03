@@ -16,25 +16,16 @@ public class SlipHypoTester {
     public static final int STANDARD_NUMBER_OF_SLIPS = 3;
 
     private int numslips;
-    private ArrayList<Slip> slips;
+    private Slip[] slips;
     private Slip winningSlip;
-    private Player player;
-    private static final ThreeSlipStrategy[] STRATEGIES = {
-            ThreeSlipStrategy.KEEP_ORIGINAL,
-            ThreeSlipStrategy.SWITCH_TO_REVEALED,
-            ThreeSlipStrategy.SWITCH_TO_UNKNOWN,
-            ThreeSlipStrategy.INFORMED_STRATEGY
-    };
 
     /**
      * Initialize with the standard number of slips.
      */
     public SlipHypoTester() {
         this.numslips = STANDARD_NUMBER_OF_SLIPS;
-        this.slips = new ArrayList<>();
-        for (int i = 0; i < numslips; i++) {
-            this.slips.add(new Slip());
-        }
+        this.slips = new Slip[numslips];
+        populateSlips();
         this.winningSlip = findWinningSlip();
     }
 
@@ -46,15 +37,25 @@ public class SlipHypoTester {
      */
     public SlipHypoTester(int numslips) {
         this.numslips = numslips;
-        this.slips = new ArrayList<>();
-        for (int i = 0; i < numslips; i++) {
-            this.slips.add(new Slip());
-        }
+        this.slips = new Slip[numslips];
+        populateSlips();
         this.winningSlip = findWinningSlip();
     }
 
+    private void populateSlips() {
+        ArrayList<Integer> values = new ArrayList<>();
+        int i = 0;
+        while (slips.length < numslips){
+            Slip slip = new Slip();
+            if (!values.contains(slip.value())) {
+                slips[i] = slip;
+                i++;
+            }
+        }
+    }
+
     private Slip findWinningSlip() {
-        Slip winner = this.slips.get(0);
+        Slip winner = this.slips[0];
         for (Slip slip : slips) {
             if (slip.value() > winner.value()) {
                 winner = slip;
@@ -81,7 +82,7 @@ public class SlipHypoTester {
     }
 
     /**
-     * Resets envionment and simulate the game for a specified number of
+     * Resets environment and simulate the game for a specified number of
      * rounds.
      *
      * @param numberOfRounds the number of rounds to simulate
@@ -90,15 +91,8 @@ public class SlipHypoTester {
      */
     public Map<ThreeSlipStrategy, Long> simulatePlay(long numberOfRounds) {
         HashMap<ThreeSlipStrategy, Long> winMap = new HashMap<>();
-        for (ThreeSlipStrategy strategy : STRATEGIES) {
-            Long numberOfWins = simulateWith(strategy, numberOfRounds);
-            winMap.put(strategy, numberOfWins);
-        }
-        return winMap;
-    }
 
-    private Long simulateWith(ThreeSlipStrategy strategy, long numberOfRounds) {
-        return 0L;
+        return winMap;
     }
 
     /**

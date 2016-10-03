@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * Represents a player utilizing the uninformed strategy in the three-slip
  * game.
@@ -7,7 +5,7 @@ import java.util.ArrayList;
  * @author Bennett Alex Myers
  * @version 3 October 2016
  */
-public class UninformedPlayer implements Player{
+public class UninformedPlayer extends Player{
 
     private ThreeSlipStrategy strategy;
     private Slip choice;
@@ -26,26 +24,18 @@ public class UninformedPlayer implements Player{
         return this.winCount;
     }
 
-    public void chooseSlipFrom(ArrayList<Slip> slips) {
+    public void incrementWinCount() {
+        this.winCount++;
+    }
+
+    public void chooseSlipFrom(Slip[] slips) {
         switch (strategy) {
             case KEEP_ORIGINAL:
-                chooseFirstSlipFrom(slips);
+                this.choice = slips[0];
             case SWITCH_TO_REVEALED:
-                chooseSecondSlipFrom(slips);
+                this.choice = slips[1];
             case SWITCH_TO_UNKNOWN:
-                chooseThirdSlipFrom(slips);
+                this.choice = slips[2];
         }
-    }
-
-    public void chooseFirstSlipFrom(ArrayList<Slip> slips) {
-
-    }
-
-    public void chooseSecondSlipFrom(ArrayList<Slip> slip) {
-
-    }
-
-    public void chooseThirdSlipFrom(ArrayList<Slip> slip) {
-
     }
 }

@@ -8,6 +8,7 @@ import java.util.Random;
  */
 public class Slip {
 
+    /** The value written on this slip. */
     private int value;
 
     /**
@@ -21,18 +22,16 @@ public class Slip {
 
     /**
      * Constructor that sets value to a random integer in the specified range.
-     *
      * @param minimum the smallest value of the range
      * @param maximum the largest value of the range
      */
-    public Slip(int minimum, int maximum) {
+    public Slip(final int minimum, final int maximum) {
         Random rng = new Random();
         this.value = rng.nextInt(maximum - minimum + 1) + minimum;
     }
 
     /**
      * Access the value written on this slip.
-     *
      * @return the value written on this slip
      */
     public int value() {
